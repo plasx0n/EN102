@@ -20,7 +20,7 @@ begin
     counter_value_register : process(rst,clk)
     begin
         if(rst='1') then
-            count_val <= (others=>'0')
+            count_val <= (others=>'0');
         elsif (clk'event and clk ='1') then
             if(enable='1') then 
                 count_val <= count_val + 1 ; 

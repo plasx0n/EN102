@@ -22,7 +22,7 @@ component counter_decounter_univ is
 end component; 
 
 signal s_rst : std_logic;
-signal s_clk : std_logic :=''0';
+signal s_clk : std_logic :='0';
 signal s_enable, s_init, s_up_down, s_load : std_logic;
 signal s_counter_value : std_logic_vector(2 downto 0);
 signal s_load_val, s_incr_value : std_logic_vector ( 2 downto 0); 
@@ -46,7 +46,7 @@ inst_counter : counter_decounter_univ
         init            =>  s_init,
         up_down         =>  s_up_down,
         load            =>  s_load,
-        load_val        =>  s_load_val,
+        load_value      =>  s_load_val,
         incr_value      =>  s_incr_value,
         counter_value   =>  s_counter_value);
 

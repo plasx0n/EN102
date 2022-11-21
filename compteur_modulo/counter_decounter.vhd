@@ -21,7 +21,7 @@ begin
     counter_value_register : process(rst,clk)
     begin
         if(rst='1') then
-            count_val <= (others=>'0')
+            count_val <= (others=>'0');
         elsif (clk'event and clk ='1') then
             if(enable='1') then 
                 if(up_down='1') then 
@@ -32,7 +32,7 @@ begin
                     end if; 
                 else 
                     if(count_val = to_unsigned(0,3)) then 
-                        count_val <= to_unsigned(5,3));
+                        count_val <= to_unsigned(5,3);
                     else 
                         count_val <= count_val - to_unsigned(1,3); 
                     end if; 
