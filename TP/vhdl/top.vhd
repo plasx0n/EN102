@@ -49,7 +49,6 @@ architecture rtl of top is
     
     signal s_D,s_cmp_valid : std_logic;
     signal s_C : std_logic_vector(7 downto 0);
-
     signal muxed_rst : std_logic ; 
 
 begin

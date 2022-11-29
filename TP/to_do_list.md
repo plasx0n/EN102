@@ -4,4 +4,8 @@
 - [x] counter tb 
 - [] comparator tb --errors to investigate 
 - [x] timer tb 
-- [ ] whole system  
+- [x] whole system  
+
+some points are open for discussion i believe 
+reset sync ? 
+clock in every modules ? ... 

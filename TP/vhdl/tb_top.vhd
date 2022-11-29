@@ -16,9 +16,14 @@ architecture rtl of tb_top is
     );
     end component;  
 
+    -- inputs 
     signal s_clk, s_rst : std_logic:='1'; 
     signal s_E          : std_logic :='0' ; 
     signal s_val        : std_logic_vector(7 downto 0):=x"09";
+    
+    --outputs 
+    signal s_S          : std_logic;
+
 begin
 
     
@@ -26,13 +31,18 @@ begin
     s_rst  <= '1', '0'     after 100 ns ; 
     s_E    <= not s_E      after 60 ns ; 
 
+
+    assert s_S = '1' 
+        report "The expression is false"
+        severity warning;
+
     inst_top : top 
     port map(
         clk => s_clk,
         rst => s_rst,
         E   => s_E,
         val => s_val,
-        S   => open
+        S   => s_S 
     );
 
 
