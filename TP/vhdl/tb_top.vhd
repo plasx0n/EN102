@@ -24,17 +24,19 @@ architecture rtl of tb_top is
     --outputs 
     signal s_S          : std_logic;
 
+    --some constants
+    constant period : time := 10 ns;
+
 begin
 
     
-    s_clk  <= not s_clk    after 10 ns; 
-    s_rst  <= '1', '0'     after 100 ns ; 
-    s_E    <= not s_E      after 60 ns ; 
+    s_clk  <= not s_clk    after period ; 
+    s_rst  <= '1', '0'     after 10*period ; 
+    s_E    <= not s_E      after 6*period ; 
 
-
-    assert s_S = '1' 
-        report "The expression is false"
-        severity warning;
+    -- configurations a test 
+    -- train binaire random 
+    -- vérifier S et le reset avec val 
 
     inst_top : top 
     port map(
