@@ -1,3 +1,6 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
 -- MOORE MACHINE 
 entity FSM is
     port (
@@ -12,7 +15,7 @@ architecture rtl of FSM is
    type state_type is (A, B, C, D);
    signal state, next_state : state_type;
    --Declare internal signals for all outputs of the state-machine
-   signal <output>_i : std_logic;  -- example output signal
+--    signal <output>_i : std_logic; 
    --other outputs
 
    begin
@@ -27,40 +30,53 @@ architecture rtl of FSM is
    --MOORE State-Machine - Outputs based on state only
    OUTPUT_DECODE: process (state)
    begin
-      --insert statements to decode internal output signals
-      --below is simple example
-      if state = st3_<name> then
-         <output>_i <= '1';
-      else
-         <output>_i <= '0';
-      end if;
+        if state = A then
+            P1 <= '0';
+            P2 <= '0';
+        elsif state = B then 
+            P1 <= '1';
+            P2 <= '0';
+        elsif state = C then 
+            P1 <= '0';
+            P2 <= '0';
+        elsif state = D then 
+            P1 <= '0';
+            P2 <= '1';
+
+        end if;
    end process;
 
-   NEXT_STATE_DECODE: process (state, <input1>, <input2>, ...)
+   NEXT_STATE_DECODE: process (state, D1,D2)
    begin
-      --declare default state for next_state to avoid latches
-      next_state <= state;  --default is to stay in current state
-      --insert statements to decode next_state
-      --below is a simple example
       case (state) is
         when A =>
-            if <input_1> = '1' then
-               next_state <= st2_<name>;
-            end if;
+            if D1 = '1' and D2='0' then
+               next_state <= B ;
+            elsif D1='0' and D2='1' then
+                next_state <=D ; 
+            end if; 
 
         when B =>
-            if <input_2> = '1' then
-               next_state <= st3_<name>;
-            end if;
+            if D1 = '0' and D2= '0'  then
+                next_state <= C ;
+            elsif D1='0' and D2='1' then
+                next_state <=D ;
+            end if ; 
 
         when C =>
-            next_state <= st1_<name>;
+        if D1 = '1' and D2='0' then
+            next_state <= B ;
+         elsif D1='0' and D2='1' then
+             next_state <=D ; 
+         end if; 
 
         when D =>
-            next_state <= st1_<name>;
+        if D1 = '0'  and D2 ='0' then
+            next_state <= B ;
+         elsif D1='1' and D2='0' then
+             next_state <= A ; 
+         end if; 
 
-        when others =>
-            next_state <= st1_<name>;
       end case;
    end process;
 
