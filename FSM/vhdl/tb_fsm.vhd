@@ -6,7 +6,7 @@ end tb_fsm;
 
 architecture behaviorla of tb_fsm is
 
-    signal s_D1,s_D2: std_logic:='0' ; i
+    signal s_D1,s_D2: std_logic:='0' ; 
     signal s_clk : std_logic :='1' ; 
     signal s_P1,s_P2 : std_logic ; 
 
