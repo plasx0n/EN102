@@ -21,7 +21,7 @@ begin
         if(rst = '1') then
             state <= st_wait;
         elsif (clk'event and clk = '1') then
-                state <= next_state;
+            state <= next_state;
         end if;
     end process;
 
@@ -33,7 +33,7 @@ begin
             D <= '0';
         when st_detect => 
             D <= '1';
-	when st_tempo => 
+	    when st_tempo => 
             D <= '0';
       end case;
     end process;
@@ -48,13 +48,13 @@ begin
                 next_state <= st_detect;
             end if;
         when st_detect => 
-		next_state <= st_tempo;
-	when st_tempo =>
+		    next_state <= st_tempo;
+	    when st_tempo =>
             if(E = '0') then
-		next_state <= st_wait;
-	    else 
-		next_state <= st_tempo;
-	    end if;
+		        next_state <= st_wait;
+	        else 
+		        next_state <= st_tempo;
+	        end if;
       end case;
    end process;
 
